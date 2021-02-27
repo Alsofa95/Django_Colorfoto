@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Daniel Moreno">
+
+  <title>Alfageek</title>
+
+  <link rel="icon" href="https://img.icons8.com/android/24/000000/camera.png">
+
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+        <!-- ------------------------------------------->
+        {% if url %}
+          <div class="container mb-5">
+            <div class="row">
+              <div class="col-md-6 mb-2">          
+                <img src="{{url}}" alt="Original" class="img-thumbnail">
+              </div>
+              <div class="col-md-6 mb-2">
+                <img src="{{resultado}}" alt="Coloreada" class="img-thumbnail">
+              </div>
+            </div>
+            <a href="{{resultado}}" download class="btn btn-primary_des btn-xl rounded-pill mt-3 ml-4">Descargar imagen coloreada</a>
+          </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="conteiner mb-5 bg-dark p-5">
+          <h4>Archivo no compatible, prueba con otra foto.</h4>
+          <h5>(Es necesario formato .JPG o .PNG)</h5>
+        </div>
+        {% endif %}
+
+        {% if error2 %}
+        <div class="conteiner mb-5 bg-dark p-5">
+          <h4>Archivo demasiado grande.</h4>
+          <h5>(Máximo 5MB)</h5>
+        </div>
+        {% endif %}
+        <!-- ------------------------------------------->
+        
+        <h1 class="masthead-heading mb-0">Tus recuerdos a color</h1>
+        <h2>Conversor a color de fotos en Blanco y Negro</h2>
+        <h5> </h5>
+
+        <form method="post" enctype="multipart/form-data" id="formC">
+          {% csrf_token %}
+        <div class="box mt-3">
+
+					<input type="file" name="document" id="file-5" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" >
+          <label for="file-5"><figure><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg></figure> 
+            <span>Seleccionar imagen…</span>
+          </label>
+        </div>
+        <button class="btn btn-primary btn-xl rounded-pill mt-3" type="submit">Convertir Imagen</button>
+        </form>
+      </div>
+    </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-4 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle" src="{% static 'img/Miperfil.jpg'%}" alt="">
+          </div>
+        </div>
+        <div class="col-lg-8 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">Hola, mi nombre es <br> Daniel Moreno Aljaro</h2>
+            <p class="display-7">Soy el creador de Alfageek.es, y junto a este proyecto pretendo mantener vivos esos recuerdos que pensabas olvidados, y darles otro punto de vista llenandolos de color.</p>
+            <p class="display-7">Mi experiencia e interés se encuentran en las tecnologías front-end, que incluyen HTML / 5, CSS, JavaScript (así como marcos como jQuery, MooTools y Dojo Toolkit). 
+              Mis habilidades del lado del servidor giran en torno a PHP y Python.</p>
+            <p class="display-7">Espero que disfrutes de este proyecto tanto como yo desarrollarlo. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container mb-5 mt-5 text-center">
+      <h1 class="display-4"> Algunos ejemplos</h1>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <img class="img-fluid rounded" src="{% static 'img/foto_muestra.jpg'%}" alt="">
+        </div>
+        <div class="col-md-6 mb-4">
+          <img class="img-fluid rounded" src="{% static 'img/foto_muestraC.jpg'%}" alt="">
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <img class="img-fluid rounded" src="{% static 'img/foto_muestra2.jpg'%}" alt="">
+        </div>
+        <div class="col-md-6 mb-4">
+          <img class="img-fluid rounded" src="{% static 'img/foto_muestra2C.jpg'%}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
+    <div class="container">
+      <p class="m-0 text-center text-white small">Copyright &copy; Alfageek 2021 / Por Daniel Moreno Aljaro</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <script>
+    var inputs = document.querySelectorAll( '.inputfile' );
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+      var label	 = input.nextElementSibling,
+        labelVal = label.innerHTML;
+  
+      input.addEventListener( 'change', function( e )
+      {
+        var fileName = '';
+        fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+  
+  
+        if( fileName )
+          label.querySelector( 'span' ).innerHTML = "Imagen seleccionada";
+        else
+          label.innerHTML = labelVal;
+      });
+    });
+  </script>
+
+</body>
+
+</html>
